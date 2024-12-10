@@ -84,7 +84,7 @@
                               <Component id="jSeparator1" alignment="1" max="32767" attributes="0"/>
                               <Group type="102" alignment="0" attributes="0">
                                   <Group type="103" groupAlignment="0" attributes="0">
-                                      <Component id="jComboBox1" alignment="0" min="-2" max="-2" attributes="0"/>
+                                      <Component id="comboBox" alignment="0" min="-2" max="-2" attributes="0"/>
                                       <Component id="jButton5" alignment="0" min="-2" max="-2" attributes="0"/>
                                   </Group>
                                   <EmptySpace type="separate" max="-2" attributes="0"/>
@@ -123,7 +123,7 @@
                           <Group type="103" groupAlignment="0" attributes="0">
                               <Component id="jScrollPane3" min="-2" pref="132" max="-2" attributes="0"/>
                               <Group type="102" attributes="0">
-                                  <Component id="jComboBox1" min="-2" max="-2" attributes="0"/>
+                                  <Component id="comboBox" min="-2" max="-2" attributes="0"/>
                                   <EmptySpace min="-2" pref="67" max="-2" attributes="0"/>
                                   <Component id="jButton5" min="-2" max="-2" attributes="0"/>
                               </Group>
@@ -174,7 +174,7 @@
                 </Component>
                 <Component class="javax.swing.JSeparator" name="jSeparator1">
                 </Component>
-                <Component class="javax.swing.JComboBox" name="jComboBox1">
+                <Component class="javax.swing.JComboBox" name="comboBox">
                   <Properties>
                     <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
                       <Color blue="33" green="33" red="33" type="rgb"/>
@@ -189,8 +189,8 @@
                       <StringArray count="4">
                         <StringItem index="0" value="Suma"/>
                         <StringItem index="1" value="Resta"/>
-                        <StringItem index="2" value="Multiplicaci&#xf3;n"/>
-                        <StringItem index="3" value="Divisi&#xf3;n"/>
+                        <StringItem index="2" value="Multiplicacion"/>
+                        <StringItem index="3" value="Division"/>
                       </StringArray>
                     </Property>
                   </Properties>
@@ -211,6 +211,9 @@
                     </Property>
                     <Property name="text" type="java.lang.String" value="Seleccionar"/>
                   </Properties>
+                  <Events>
+                    <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jButton5ActionPerformed"/>
+                  </Events>
                 </Component>
                 <Component class="javax.swing.JLabel" name="jLabel6">
                   <Properties>
@@ -238,16 +241,17 @@
 
                   <Layout class="org.netbeans.modules.form.compat2.layouts.support.JScrollPaneSupportLayout"/>
                   <SubComponents>
-                    <Component class="javax.swing.JTable" name="TablaCalif">
+                    <Component class="javax.swing.JTable" name="TablaOp">
                       <Properties>
                         <Property name="model" type="javax.swing.table.TableModel" editor="org.netbeans.modules.form.editors2.TableModelEditor">
-                          <Table columnCount="2" rowCount="5">
-                            <Column editable="true" title="Operaciones" type="java.lang.Object">
+                          <Table columnCount="2" rowCount="6">
+                            <Column editable="true" title="Ultimas Operaciones" type="java.lang.Object">
+                              <Data value="Suma"/>
+                              <Data value="Resta"/>
+                              <Data value="Multiplicacion"/>
+                              <Data value="Division"/>
                               <Data value=""/>
-                              <Data value=""/>
-                              <Data value=""/>
-                              <Data value=""/>
-                              <Data value=""/>
+                              <Data value="null"/>
                             </Column>
                             <Column editable="true" title="Resultado" type="java.lang.Object"/>
                           </Table>
