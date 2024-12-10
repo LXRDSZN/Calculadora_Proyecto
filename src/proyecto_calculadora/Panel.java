@@ -52,11 +52,12 @@ private void agregarResultadoAlJList() {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        si_y_no = new javax.swing.ButtonGroup();
         jPanel2 = new javax.swing.JPanel();
         jTabbedPane1 = new javax.swing.JTabbedPane();
         Panel = new javax.swing.JPanel();
         jButton4 = new javax.swing.JButton();
-        jCheckBox1 = new javax.swing.JCheckBox();
+        siBox = new javax.swing.JCheckBox();
         jSeparator1 = new javax.swing.JSeparator();
         comboBox = new javax.swing.JComboBox<>();
         jButton5 = new javax.swing.JButton();
@@ -65,7 +66,7 @@ private void agregarResultadoAlJList() {
         jSlider2 = new javax.swing.JSlider();
         jScrollPane3 = new javax.swing.JScrollPane();
         TablaOp = new javax.swing.JTable();
-        jCheckBox3 = new javax.swing.JCheckBox();
+        noBox = new javax.swing.JCheckBox();
         Calculadora = new javax.swing.JPanel();
         jSplitPane2 = new javax.swing.JSplitPane();
         jPanel9 = new javax.swing.JPanel();
@@ -108,8 +109,14 @@ private void agregarResultadoAlJList() {
         jButton4.setFont(new java.awt.Font("Segoe UI Emoji", 0, 18)); // NOI18N
         jButton4.setForeground(new java.awt.Color(255, 255, 255));
         jButton4.setText("Borrar");
+        jButton4.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton4ActionPerformed(evt);
+            }
+        });
 
-        jCheckBox1.setText("SI");
+        si_y_no.add(siBox);
+        siBox.setText("SI");
 
         comboBox.setBackground(new java.awt.Color(51, 51, 51));
         comboBox.setFont(new java.awt.Font("Segoe UI Semilight", 0, 14)); // NOI18N
@@ -150,7 +157,8 @@ private void agregarResultadoAlJList() {
         TablaOp.setEnabled(false);
         jScrollPane3.setViewportView(TablaOp);
 
-        jCheckBox3.setText("No");
+        si_y_no.add(noBox);
+        noBox.setText("No");
 
         javax.swing.GroupLayout PanelLayout = new javax.swing.GroupLayout(Panel);
         Panel.setLayout(PanelLayout);
@@ -173,14 +181,14 @@ private void agregarResultadoAlJList() {
                         .addGap(21, 21, 21)
                         .addComponent(jButton4, javax.swing.GroupLayout.PREFERRED_SIZE, 135, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(43, 43, 43)
-                        .addComponent(jCheckBox1, javax.swing.GroupLayout.PREFERRED_SIZE, 85, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(siBox, javax.swing.GroupLayout.PREFERRED_SIZE, 85, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGroup(PanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                             .addGroup(PanelLayout.createSequentialGroup()
                                 .addGap(192, 192, 192)
                                 .addComponent(jLabel7, javax.swing.GroupLayout.PREFERRED_SIZE, 240, javax.swing.GroupLayout.PREFERRED_SIZE))
                             .addGroup(PanelLayout.createSequentialGroup()
                                 .addGap(18, 18, 18)
-                                .addComponent(jCheckBox3, javax.swing.GroupLayout.PREFERRED_SIZE, 85, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addComponent(noBox, javax.swing.GroupLayout.PREFERRED_SIZE, 85, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 143, Short.MAX_VALUE)
                                 .addComponent(jSlider2, javax.swing.GroupLayout.PREFERRED_SIZE, 267, javax.swing.GroupLayout.PREFERRED_SIZE)))
                         .addContainerGap(87, Short.MAX_VALUE))))
@@ -203,8 +211,8 @@ private void agregarResultadoAlJList() {
                         .addGap(24, 24, 24)
                         .addGroup(PanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(jButton4)
-                            .addComponent(jCheckBox1)
-                            .addComponent(jCheckBox3)))
+                            .addComponent(siBox)
+                            .addComponent(noBox)))
                     .addGroup(PanelLayout.createSequentialGroup()
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(jLabel7)
@@ -648,6 +656,32 @@ private void agregarResultadoAlJList() {
         
     }//GEN-LAST:event_jButton5ActionPerformed
 
+    private void jButton4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton4ActionPerformed
+        // Verifica si el checkbox "Sí" está seleccionado
+    if (siBox.isSelected()) {
+        // Borra todos los datos de la tabla
+        DefaultTableModel modelo = (DefaultTableModel) TablaOp.getModel();
+        
+        // Limpiar todas las filas de la tabla
+        int rowCount = modelo.getRowCount();
+        for (int i = rowCount - 1; i >= 0; i--) {
+            modelo.removeRow(i);
+        }
+        
+        // También puedes limpiar otros elementos, como campos de texto si lo deseas
+        // ejemplo: campoTexto.setText("");
+        
+        System.out.println("Datos borrados de la tabla.");
+    } else if (noBox.isSelected()) {
+        System.out.println("No se borraron los datos.");
+    }
+    
+    // Limpiar los checkboxes si lo deseas
+    siBox.setSelected(false);
+    noBox.setSelected(false);
+        
+    }//GEN-LAST:event_jButton4ActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -697,8 +731,6 @@ private void agregarResultadoAlJList() {
     private javax.swing.JButton igual;
     private javax.swing.JButton jButton4;
     private javax.swing.JButton jButton5;
-    private javax.swing.JCheckBox jCheckBox1;
-    private javax.swing.JCheckBox jCheckBox3;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel6;
@@ -714,6 +746,7 @@ private void agregarResultadoAlJList() {
     private javax.swing.JSplitPane jSplitPane2;
     private javax.swing.JTabbedPane jTabbedPane1;
     private javax.swing.JButton multiplicacion;
+    private javax.swing.JCheckBox noBox;
     private javax.swing.JButton number1;
     private javax.swing.JButton number2;
     private javax.swing.JButton number3;
@@ -724,6 +757,8 @@ private void agregarResultadoAlJList() {
     private javax.swing.JButton number8;
     private javax.swing.JButton number9;
     private javax.swing.JButton resta;
+    private javax.swing.JCheckBox siBox;
+    private javax.swing.ButtonGroup si_y_no;
     private javax.swing.JButton suma;
     // End of variables declaration//GEN-END:variables
 
