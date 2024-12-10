@@ -9,10 +9,7 @@ import java.awt.event.ActionListener;
 import javax.swing.JOptionPane;
 import javax.swing.Timer;
 
-/**
- *
- * @author ivang
- */
+
 public class Login extends javax.swing.JFrame {
     //Variables para el inicio de sesion
     String password = "admin";

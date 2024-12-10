@@ -6,10 +6,7 @@ package proyecto_calculadora;
 
 import javax.swing.DefaultListModel;
 import javax.swing.table.DefaultTableModel;
-/**
- *
- * @author ivang
- */
+
 public class Panel extends javax.swing.JFrame {
     
     
@@ -606,7 +603,7 @@ private void agregarResultadoAlJList() {
                 model.addRow(new Object[]{multiplicacion, TxtVisor.getText()});
                 break;
         }
-            int numOperaciones = TablaCalif.getRowCount(); // hacenos conteo de la soperaciones en la tabla 
+            int numOperaciones = TablaCalif.getRowCount(); // hacemos el conteo para las operaciones
             slyder_contador.setMaximum(numOperaciones);
             slyder_contador.setValue(numOperaciones);
     }//GEN-LAST:event_igualActionPerformed
