@@ -5,7 +5,7 @@
 package proyecto_calculadora;
 
 import javax.swing.DefaultListModel;
-
+import javax.swing.table.DefaultTableModel;
 /**
  *
  * @author ivang
@@ -16,7 +16,7 @@ public class Panel extends javax.swing.JFrame {
     int num1,num2;
     String operador;
     private DefaultListModel<String> listModel;
-
+    
     /**
      * Creates new form Panel
      */
@@ -58,7 +58,7 @@ private void agregarResultadoAlJList() {
         jButton5 = new javax.swing.JButton();
         jLabel6 = new javax.swing.JLabel();
         jLabel7 = new javax.swing.JLabel();
-        jSlider2 = new javax.swing.JSlider();
+        slyder_contador = new javax.swing.JSlider();
         jScrollPane3 = new javax.swing.JScrollPane();
         TablaCalif = new javax.swing.JTable();
         jCheckBox3 = new javax.swing.JCheckBox();
@@ -121,17 +121,15 @@ private void agregarResultadoAlJList() {
 
         jLabel7.setText("Cantidad De Operaciones en la tabla");
 
-        jSlider2.setMajorTickSpacing(10);
-        jSlider2.setMinorTickSpacing(10);
-        jSlider2.setPaintLabels(true);
+        slyder_contador.setMajorTickSpacing(1);
+        slyder_contador.setMaximum(10);
+        slyder_contador.setMinorTickSpacing(1);
+        slyder_contador.setPaintLabels(true);
+        slyder_contador.setValue(0);
 
         TablaCalif.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
-                {"", null},
-                {"", null},
-                {"", null},
-                {"", null},
-                {"", null}
+
             },
             new String [] {
                 "Operaciones", "Resultado"
@@ -172,7 +170,7 @@ private void agregarResultadoAlJList() {
                                 .addGap(18, 18, 18)
                                 .addComponent(jCheckBox3, javax.swing.GroupLayout.PREFERRED_SIZE, 85, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 143, Short.MAX_VALUE)
-                                .addComponent(jSlider2, javax.swing.GroupLayout.PREFERRED_SIZE, 267, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                                .addComponent(slyder_contador, javax.swing.GroupLayout.PREFERRED_SIZE, 267, javax.swing.GroupLayout.PREFERRED_SIZE)))
                         .addContainerGap(87, Short.MAX_VALUE))))
         );
         PanelLayout.setVerticalGroup(
@@ -186,7 +184,7 @@ private void agregarResultadoAlJList() {
                         .addGap(67, 67, 67)
                         .addComponent(jButton5))
                     .addComponent(jLabel6, javax.swing.GroupLayout.PREFERRED_SIZE, 214, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 48, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 52, Short.MAX_VALUE)
                 .addComponent(jSeparator1, javax.swing.GroupLayout.PREFERRED_SIZE, 10, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGroup(PanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(PanelLayout.createSequentialGroup()
@@ -199,7 +197,7 @@ private void agregarResultadoAlJList() {
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(jLabel7)
                         .addGap(18, 18, 18)
-                        .addComponent(jSlider2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addComponent(slyder_contador, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addGap(66, 66, 66))
         );
 
@@ -575,30 +573,42 @@ private void agregarResultadoAlJList() {
 
     private void igualActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_igualActionPerformed
         num2 = Integer.parseInt(TxtVisor.getText());
-        
+        DefaultTableModel model = (DefaultTableModel) TablaCalif.getModel();
+
         switch(operador){
         
             case "+":
                 TxtVisor.setText(Integer.toString(num1 + num2));
                 agregarResultadoAlJList();
+                // Código adicional para la tabla:
+                String suma = num1 + " " + operador + " " + num2; 
+                model.addRow(new Object[]{suma, TxtVisor.getText()});
                 break;
             
             case "-":
                 TxtVisor.setText(Integer.toString(num1 - num2));
                 agregarResultadoAlJList();
+                String resta = num1 + " " + operador + " " + num2; 
+                model.addRow(new Object[]{resta, TxtVisor.getText()});
                 break;
         
             case "/":
                 TxtVisor.setText(Integer.toString(num1 / num2));
                 agregarResultadoAlJList();
+                String division = num1 + " " + operador + " " + num2; 
+                model.addRow(new Object[]{division, TxtVisor.getText()});
                 break;
                 
             case "*":
                 TxtVisor.setText(Integer.toString(num1 * num2));
                 agregarResultadoAlJList();
+                String multiplicacion = num1 + " " + operador + " " + num2; 
+                model.addRow(new Object[]{multiplicacion, TxtVisor.getText()});
                 break;
-        
         }
+            int numOperaciones = TablaCalif.getRowCount(); // hacenos conteo de la soperaciones en la tabla 
+            slyder_contador.setMaximum(numOperaciones);
+            slyder_contador.setValue(numOperaciones);
     }//GEN-LAST:event_igualActionPerformed
 
     /**
@@ -663,7 +673,6 @@ private void agregarResultadoAlJList() {
     private javax.swing.JScrollPane jScrollPane3;
     private javax.swing.JScrollPane jScrollPane4;
     private javax.swing.JSeparator jSeparator1;
-    private javax.swing.JSlider jSlider2;
     private javax.swing.JSplitPane jSplitPane2;
     private javax.swing.JTabbedPane jTabbedPane1;
     private javax.swing.JButton multiplicacion;
@@ -677,6 +686,7 @@ private void agregarResultadoAlJList() {
     private javax.swing.JButton number8;
     private javax.swing.JButton number9;
     private javax.swing.JButton resta;
+    private javax.swing.JSlider slyder_contador;
     private javax.swing.JButton suma;
     // End of variables declaration//GEN-END:variables
 
